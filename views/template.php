@@ -12,7 +12,7 @@
     <body>
         <?php require_once("menu.php");?>
         <?= $page_content ?>
-        <?php require_once("inscription.html");?>
+        
         
 
     <script src="../assets\js\jquery-3.6.4.min.js"></script>
