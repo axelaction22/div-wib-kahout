@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style type="text/css" id="operaUserStyle"></style>
+    <script src="js/validation.js"></script>
+</head>
+<body>
+    <section class="container">
+        <!---<body style="background-color: #ff5a98"> couleur de fond--->
+            <div class="col-lg-12">
+                <center><h2 class="text-center">Formulaire de connexion</h2></center>
+            </div>              
+                
+        <!---</body>--->
+            <div class="col-lg-12">
+                <center>
+                <div style="display: none;" id="bravo">
+                    <p>Vous n'avez pas remplit correctement le formulaire :/</p>
+                </div>
+                <div style="display: none;" id="bravo">
+                    <p>Tout a fonctionné comme dans le meilleur des mondes !</p>
+                </div>
+                <form role="form" id="Form" class="text-center">
+                    <div class="form-group">
+                        <input text="text" class="form-control-champ" id="mail" name="mail" placeholder="Votre adresse mail" required>
+                        <span class="help-block" style="display: none;">Adresse e-mail non valide</span>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input text="password" class="form-control-champ" id="mdp" name="mdp" placeholder="Votre mot de passe" required>
+                        <span class="help-block" style="display: none;">Le mot de passe doit respecter la complexité demandée.</span>
+                    </div>
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Envoyer">
+                </center>
+                </form>
+        </div>
+    </section>
+    
+</body>
+</html>
