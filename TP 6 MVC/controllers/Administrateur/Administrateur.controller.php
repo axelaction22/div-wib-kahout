@@ -2,7 +2,7 @@
 
 
 require_once("./controllers/MainController.controller.php");
-require_once("./models/Administrateur/Administrateur.controller.php");
+require_once("./models/Administrateur/Administrateur.model.php");
 
 
 class AdministrateurController extends MainController{
@@ -13,13 +13,14 @@ class AdministrateurController extends MainController{
     }
 
     public function droits(){
-        $utilistateurs=$this->administrateurManager->getUtilisateur();
+        $utilisateurs=$this->administrateurManager->getUtilisateur();
 
         $data_page=[
             "page_description"=>"Gestion des droits",
             "page_title"=>"Gestion des droits",
-            "utilisateurs"=>$utilistateurs,
-            "view"=>"views/common/template.php"
+            "utilisateurs"=>$utilisateurs,
+            "view"=>"views/Administrateur/droits.view.php",
+            "template"=>"views/common/template.php"
         ];
         $this->genererPage($data_page);
     }
