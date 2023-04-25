@@ -1,0 +1,42 @@
+<?php
+
+//Récupération du contrôleur principal MainController
+require_once("./controllers/MainController.controller.php");
+//Récupération des données contenues dans le model visiteur
+require_once("./models/Visiteur/Visiteur.model.php");
+
+//Création de l'héritage de notre class MainCrontroller
+class VisiteurController extends MainController{
+    private $visiteurManager;
+
+    //Constructeur avec l'instancation du visiteur Manager
+    public function __construct()
+    {
+        $this->visiteurManager =new VisiteurManager();
+    }
+
+    public function accueil(){
+        $data_page =[
+         "page_description"=>"Description de la page d'accueil",
+         "page_title"=>"Titre de la page d'accueil",
+         "view"=>"./views/Visiteur/accueil.view.php",
+         "template"=>"views/common/template.php"
+        ];  
+        $this->genererPage($data_page);
+     }
+
+    public function pageErreur($msg)
+    {
+        parent::pageErreur($msg);
+    }
+
+    public function creerCompte(){
+        $data_page=[
+            "page_description" => "Page de création de compte",
+            "page_title"=>"Page de création de compte",
+            "view"=>"views/Visiteur/creerCompte.view.php",
+            "template"=>"views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+}

@@ -1,0 +1,1 @@
+<h1>Page de gestion des droits</h1>
