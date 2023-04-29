@@ -39,7 +39,6 @@ try{
                 $login = Securite::secureHTML($_POST['login']);
                 $password = Securite::secureHTML($_POST['password']);
                 $utilisateurController->validation_login($login,$password);
-                echo "tut";
                 
             }else{
                 ToolBox::ajouterMessageAlerte("Login ou mot de Passe non renseigné", ToolBox::COULEUR_ROUGE);
@@ -54,10 +53,13 @@ try{
                 switch($url[1]){
                     case "profil": $utilisateurController->profil();
                     break;
-                    default : throw new Exception("lol");
+                    case "deconnexion":$utilisateurController->deconnexion();
+                    break;
+                    default : throw new Exception("la page n'existe pas");
+                    
                 }
             }
-           default : throw new Exception("la ");
+           default : throw new Exception("la page n'existe pas");
         }
     }catch(Exception $e){
         $visiteurController->pageErreur($e->getMessage());

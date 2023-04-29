@@ -10,6 +10,9 @@ class Securite{
     public static function estUtilisateur(){
         return ($_SESSION['profil']['role'] === "utilisateur");
     }
+    public static function estProfesseur(){
+        return ($_SESSION['profil']['role']==="professeur");
+    }
     public static function estAdministrateur(){
         return ($_SESSION['profil']['role']==="administrateur");
     }

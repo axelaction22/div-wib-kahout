@@ -9,12 +9,34 @@
       <li class="nav-item active">
         <a class="nav-link" href="<?= URL; ?>accueil">Accueil <span class="sr-only">(current)</span></a>
       </li>
+      <?php if (!Securite::estConnecte()) : ?>
       <li class="nav-item">
+        <a class="nav-link "aria-current="page" href="<?= URL;?>login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link "aria-current="page" href="<?= URL;?>creerCompte">Creer un Compte</a>
+      </li>
+      <?php else :?>
+        <li class="nav-item">
+        <a class="nav-link "aria-current="page" href="<?= URL;?>compte/profil">Profil</a>
+        </li>
+        <li class="nav-item">
         <a class="nav-link" href="<?= URL;?>mescours">Mes cours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="<?= URL;?>compte/deconnexion">Se déconnecter</a>
+        </li>
+      <?php endif;?>
+      <?php if(Securite::estConnecte() && Securite::estAdministrateur()) :?>
+      <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?= URL; ?>administration/droits"> Gérer les droits</a>
+              </div>
+          </li>    
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?= URL; ?>login"> Login</a>
-      </li>
+      <?php  endif ?>
     </ul>
   </div>
 </nav>
