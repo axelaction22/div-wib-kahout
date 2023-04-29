@@ -42,5 +42,3 @@ class ToolBox{
         else return ($random."_".$file['name']);
     }
 }
-
-?>

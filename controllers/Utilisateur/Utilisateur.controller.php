@@ -54,6 +54,51 @@ class UtilisateurController extends MainController{
     }
     
 
+    public function validation_modificationMail($mail){
+        if($this->utilisateurManager->bdModificationMailUser($_SESSION['profil']['login'],$mail)){
+            ToolBox::ajouterMessageAlerte("La modification est effectué",ToolBox::COULEUR_VERTE);
+        }else{
+            ToolBox::ajouterMessageAlerte("Aucune modification effectuée", ToolBox::COULEUR_ROUGE);
+        }
+        header("Location: ".URL."compte/profil");
+    }
+
+
+    public function modificationPassword(){
+        $data_page=[
+            "page_description" => "Page de modification du password",
+            "page_title"=>"Page de modification du password",
+            "page_javascript" => ["modificationPassword.js"],
+            "view"=>"views/Utilisateur/modificationPassword.view.php",
+            "template"=>"views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function validation_modificationPassword($ancienPassword,$nouveauPassword,$confirmationNouveauPassword){
+        if($nouveauPassword === $confirmationNouveauPassword){
+            if($this->utilisateurManager->isCombinaisonValide($_SESSION['profil']['login'],$ancienPassword)){
+                $passwordCrypte =password_hash($nouveauPassword,PASSWORD_DEFAULT);
+                if($this->utilisateurManager->bdModificationPassword($_SESSION['profil']['login'],$passwordCrypte)){
+                    ToolBox::ajouterMessageAlerte("La modification du password a été effectué",ToolBox::COULEUR_VERTE);
+                    header("Location: ".URL."compte/profil");
+                }else{
+                    ToolBox::ajouterMessageAlerte("La modification a échoué", ToolBox::COULEUR_ROUGE);
+                    header("Location: ".URL."compte/modificationPassword");
+                }
+            }else{
+                ToolBox::ajouterMessageAlerte("La combinaison login/ancien password ne correspond pas",ToolBox::COULEUR_ROUGE);
+                header("Location: ".URL."compte/modificationPassword");
+            }
+        }else{
+            ToolBox::ajouterMessageAlerte("Les passwords ne correspondent pas", ToolBox::COULEUR_ROUGE);
+            header("Location: ".URL."compte/modificationPassword");
+        }
+    }
+
+    
+
+
 
 }
 
