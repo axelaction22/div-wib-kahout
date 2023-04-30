@@ -41,4 +41,12 @@ class ToolBox{
             throw new Exception("L'ajout de l'image n'a pas fonctionné");
         else return ($random."_".$file['name']);
     }
+    public static function getMessagesAlerte(){
+        $messages = [];
+        if(isset($_SESSION['messages_alerte'])){
+            $messages = $_SESSION['messages_alerte'];
+            unset($_SESSION['messages_alerte']);
+        }
+        return $messages;
+    }
 }
