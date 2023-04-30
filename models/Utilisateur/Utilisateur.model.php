@@ -64,6 +64,34 @@ class utilisateurManager extends MainManager{
         $stmt->closeCursor();
         return $estModifier;
     }
+
+    
+    public function getIDUtilisateur($login){
+        $req = "SELECT id_utilisateur FROM utilisateurs WHERE login = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat['id_matiere'];
+    }
+
+    public function linkUtilisateurMatiere($id_matiere,$id_utilisateur){
+        //fct pour s'inscrire a un cours
+        $req ="INSERT INTO etudier(id_etudiant,id_cours) VALUES (:,:id_matiere)";
+        $stmt=$this->getBdd()->prepare($req);
+        $stmt->bindValue(":id_matiere",$id_matiere,PDO::PARAM_INT);
+        $stmt->bindValue(":id_utilisateur",$id_utilisateur,PDO::PARAM_INT);
+        $stmt->execute();
+        $estModifier=($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $estModifier;
+
+
+
+    }
+
+
 }
 
 ?>
