@@ -27,7 +27,7 @@ class UtilisateurController extends MainController{
                 header("Location: ".URL."login");
             }
         }else{
-            ToolBox::ajouterMessageAlerte("Combinaison Login / Mot de passe non valide", Toolbox::COULEUR_ROUGE);
+            ToolBox::ajouterMessageAlerte("Combinaison Login / Mode de passe non valide", Toolbox::COULEUR_ROUGE);
             header("Location: ".URL."login");
         }
     }
@@ -48,11 +48,30 @@ class UtilisateurController extends MainController{
         $this->genererPage($data_page);
     }
     public function deconnexion(){
-        ToolBox::ajouterMessageAlerte("La deconnexion est effectuée !",ToolBox::COULEUR_VERTE);
+        ToolBox::ajouterMessageAlerte("La deconnexion est effectuée",ToolBox::COULEUR_VERTE);
         unset($_SESSION['profil']);
-        $_SESSION['messages'] = ToolBox::getMessagesAlerte();
         header("location: ".URL."accueil");
-        exit(); // il est recommandé de sortir de la fonction après l'utilisation de header()
+    }
+    public function validation_creerCompte($login,$password,$mail){
+        if ($this->utilisateurManager->verifLoginDisponible($login)){
+            $passwordCrypte=password_hash($password,PASSWORD_DEFAULT);
+            $clef = rand(0,9999);
+            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur")){
+                $this->sendMailValidation($login,$mail,$clef);
+                ToolBox::ajouterMessageAlerte("Le compte a été crée, un mail de validation vous a été envoyé !",ToolBox::COULEUR_VERTE);
+                header("Location: ".URL."creerCompte");
+            }
+        }else{
+            ToolBox::ajouterMessageAlerte("Le login est déjà utilisé !", ToolBox::COULEUR_ROUGE);
+            header("Location: ".URL."creerCompte");
+        }
+    }
+    private function sendMailValidation($login,$mail,$clef){
+        $urlVerification = URL."validationMail/".$login."/".$clef;
+        $sujet ="Création du compte pour le site";
+        $message=" Pour valider votre compte veuillez cliquer sur le lien suivant ".$urlVerification;
+        ToolBox::ajouterMessageAlerte($urlVerification,ToolBox::COULEUR_ORANGE);
+        ToolBox::sendMail($mail,$sujet,$message);
     }
     
 
@@ -83,14 +102,10 @@ class UtilisateurController extends MainController{
                 $passwordCrypte =password_hash($nouveauPassword,PASSWORD_DEFAULT);
                 if($this->utilisateurManager->bdModificationPassword($_SESSION['profil']['login'],$passwordCrypte)){
                     ToolBox::ajouterMessageAlerte("La modification du password a été effectué",ToolBox::COULEUR_VERTE);
-                    $_SESSION['messages'] = ToolBox::getMessagesAlerte();
                     header("Location: ".URL."compte/profil");
-                    exit();
                 }else{
                     ToolBox::ajouterMessageAlerte("La modification a échoué", ToolBox::COULEUR_ROUGE);
-                    $_SESSION['messages'] = ToolBox::getMessagesAlerte();
                     header("Location: ".URL."compte/modificationPassword");
-                    exit();
                 }
             }else{
                 ToolBox::ajouterMessageAlerte("La combinaison login/ancien password ne correspond pas",ToolBox::COULEUR_ROUGE);
@@ -99,6 +114,20 @@ class UtilisateurController extends MainController{
         }else{
             ToolBox::ajouterMessageAlerte("Les passwords ne correspondent pas", ToolBox::COULEUR_ROUGE);
             header("Location: ".URL."compte/modificationPassword");
+        }
+    }
+
+
+    public function validation_mailCompte($login,$clef){
+        if($this->utilisateurManager->bdValidationMailCompte($login,$clef)){
+            ToolBox::ajouterMessageAlerte("Le compte est activé !",ToolBox::COULEUR_VERTE);
+            $_SESSION['profil']=[
+                "login"=>$login,
+            ];
+            header('Location: '.URL.'compte/profil');
+        }else  {
+            ToolBox::ajouterMessageAlerte("Le compte n'a pas été activé! ", Toolbox::COULEUR_ROUGE);
+            header('Location: '.URL.'creerCompte');
         }
     }
 

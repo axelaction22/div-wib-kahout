@@ -71,9 +71,24 @@ try{
                         }
                         break;
                     default : throw new Exception("la page n'existe pas");
-                    
                 }
             }
+            break;
+            case "creerCompte" : $visiteurController->creerCompte();
+            break;
+            case "validation_creerCompte" : 
+                if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail'])){
+                    $login = Securite::secureHTML($_POST['login']);
+                    $password =Securite::secureHTML($_POST['password']);
+                    $mail = Securite::secureHTML($_POST['mail']);
+                    $utilisateurController->validation_creerCompte($login,$password,$mail);
+                }else{
+                    ToolBox::ajouterMessageAlerte("Les 3 informations sont obligatoires !",Toolbox::COULEUR_ROUGE);
+                    header("Location: ".URL."creerCompte");
+                }
+            break;
+            case "validationMail" :$utilisateurController->validation_mailCompte($url[1],$url[2]);
+            break;
            default : throw new Exception("la page n'existe pas");
         }
     }catch(Exception $e){
