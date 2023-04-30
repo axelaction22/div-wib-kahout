@@ -102,6 +102,47 @@ class UtilisateurController extends MainController{
         }
     }
 
+
+    public function validation_mailCompte($login,$clef){
+        if($this->utilisateurManager->bdValidationMailCompte($login,$clef)){
+            ToolBox::ajouterMessageAlerte("Le compte est activé !",ToolBox::COULEUR_VERTE);
+            $_SESSION['profil']=[
+                "login"=>$login,
+            ];
+            header('Location: '.URL.'compte/profil');
+        }else  {
+            ToolBox::ajouterMessageAlerte("Le compte n'a pas été activé! ", Toolbox::COULEUR_ROUGE);
+            header('Location: '.URL.'creerCompte');
+        }
+    }
+
+
+    public function validation_creerCompte($login,$password,$mail){
+        if ($this->utilisateurManager->verifLoginDisponible($login)){
+            $passwordCrypte=password_hash($password,PASSWORD_DEFAULT);
+            $clef = rand(0,9999);
+            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur")){
+                $this->sendMailValidation($login,$mail,$clef);
+                ToolBox::ajouterMessageAlerte("Le compte a été crée, un mail de validation vous a été envoyé !",ToolBox::COULEUR_VERTE);
+                header("Location: ".URL."creerCompte");
+            }
+        }else{
+            ToolBox::ajouterMessageAlerte("Le login est déjà utilisé !", ToolBox::COULEUR_ROUGE);
+            header("Location: ".URL."creerCompte");
+        }
+    }
+
+    private function sendMailValidation($login,$mail,$clef){
+        $urlVerification = URL."validationMail/".$login."/".$clef;
+        $sujet ="Création du compte pour le site";
+        $message=" Pour valider votre compte veuillez cliquer sur le lien suivant ".$urlVerification;
+        ToolBox::ajouterMessageAlerte($urlVerification,ToolBox::COULEUR_ORANGE);
+        ToolBox::sendMail($mail,$sujet,$message);
+    }
+
+
+    
+
     
 
 

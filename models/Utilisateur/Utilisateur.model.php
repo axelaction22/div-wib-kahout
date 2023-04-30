@@ -111,6 +111,7 @@ class utilisateurManager extends MainManager{
     }
 
 
+
     public function bdValidationMailCompte($login,$clef){
         $req="UPDATE utilisateurs set est_valide =1 WHERE login =  :login and clef = :clef";
         $stmt=$this->getBdd()->prepare($req);
@@ -121,6 +122,9 @@ class utilisateurManager extends MainManager{
         $stmt->closeCursor();
         return $estModifier;
     }
+
+
+   
 }
 
 ?>

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="public/CSS/Login.css">
 <div class="container">
-        <div class="row">
+    <form method="POST" action="validation_login">
+    <div class="row">
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-key">
@@ -14,12 +15,12 @@
                     <div class="col-lg-12 login-form">
                         <form>
                             <div class="form-group">
-                                <label class="form-control-label">USERNAME</label>
-                                <input type="text" class="form-control">
+                                <label for="login" class="form-control-label">USERNAME</label>
+                                <input type="text" class="form-control" id="login" name="login">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" class="form-control" i>
+                                <input type="password" class="form-control" id="password" name="password" >
                             </div>
 
                             <div class="col-lg-12 loginbttm">
@@ -33,10 +34,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-2"></div>
             </div>
         </div>
 
+    </form>
+        
 
 
 
