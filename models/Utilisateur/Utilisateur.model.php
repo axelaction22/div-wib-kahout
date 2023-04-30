@@ -124,6 +124,40 @@ class utilisateurManager extends MainManager{
     }
 
 
+    public function bdSuppressionCompte($login){
+        $req="DELETE FROM utilisateurs WHERE login=:login";
+        $stmt=$this->getBdd()->prepare($req);
+        $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+
+    public function getImageUtilisateur($login){
+        $req ="SELECT image FROM utilisateurs WHERE login =:login";
+        $stmt=$this->getBdd()->prepare($req);
+        $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat["image"];
+    }
+
+    public function bdAjoutImage($login,$image){
+        $req ="UPDATE utilisateurs set image = :image WHERE login = :login";
+        $stmt=$this->getBdd()->prepare($req);
+        $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+        $stmt->bindValue(":image",$image,PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier=($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+    
+
    
 }
 

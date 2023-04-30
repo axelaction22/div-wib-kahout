@@ -70,6 +70,16 @@ try{
                             header("Location: ".URL."compte/modificationPassword");
                         }
                         break;
+                        case "suppressionCompte" :$utilisateurController->suppressionCompte();
+                        break;
+                        case "validation_modificationImage":
+                            if ($_FILES['image']['size'] > 0){
+                                $utilisateurController->validation_modificationImage($_FILES['image']);
+                            }else{
+                                ToolBox::ajouterMessageAlerte("Vous n'avez pas modifié l'image", ToolBox::COULEUR_ROUGE);
+                                header("Location: ".URL."compte/profil");
+                            }
+                        break;
                     default : throw new Exception("la page n'existe pas");
                 }
             }

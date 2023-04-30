@@ -141,6 +141,51 @@ class UtilisateurController extends MainController{
     }
 
 
+    public function suppressionCompte(){
+        if($this->utilisateurManager->bdSuppressionCompte($_SESSION['profil']['login'])){
+            ToolBox::ajouterMessageAlerte("La suppression du compte est effectué", ToolBox::COULEUR_VERTE);
+            $this->deconnexion();
+        }else{
+            ToolBox::ajouterMessageAlerte("La suppression n'a pas été effectué. Conctactez l'administrateur", ToolBox::COULEUR_ROUGE);
+            header("Location: ".URL."compte/profil");
+        }
+    }
+
+
+    public function validation_modificationImage($file){
+        try{
+            $repertoire = "public/assets/images/profils/".$_SESSION['profil']['login']."/";
+            $nomImage= ToolBox::ajoutImage($file,$repertoire);//ajout image dans le répertoire
+            $this->dossierSuppressionImageUtilisateur($_SESSION['profil']['login']);
+            //Suppression de l'ancienne image
+            $ancienneImage=$this->utilisateurManager->getImageUtilisateur($_SESSION['profil']['login']);
+            if($ancienneImage !=="profils/profil.png"){
+                unlink("public/assets/images/".$ancienneImage);
+            }
+            //Ajout de la nouvelle image dans la BD
+            $nomImageBD="profils/".$_SESSION['profil']['login']."/".$nomImage;
+            if($this->utilisateurManager->bdAjoutImage($_SESSION['profil']['login'],$nomImageBD)){
+                ToolBox::ajouterMessageAlerte("La modification de l'image est effectué",ToolBox::COULEUR_VERTE);
+            }else{
+                ToolBox::ajouterMessageAlerte("La modification de l'image n'a pas été effectué",ToolBox::COULEUR_ROUGE);
+            }
+        }catch(Exception $e){
+            ToolBox::ajouterMessageAlerte($e->getMessage(), ToolBox::COULEUR_ROUGE);
+        }
+
+        header("Location: ".URL."compte/profil");
+    }
+
+
+    
+    public function dossierSuppressionImageUtilisateur($login){
+        $ancienneImage = $this->utilisateurManager->getImageUtilisateur($_SESSION['profil']['login']);
+        if($ancienneImage !== "profils/profil.png"){
+            unlink("public/assets/images/".$ancienneImage);
+        }
+    }
+
+
     
 
     
