@@ -23,7 +23,7 @@
                                 <input type="password" class="form-control" id="password" name="password" >
                             </div>
 
-                            <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-12 loginbttm col text-center">
                                 <div class="col-lg-6 login-btm login-text">
                                     <!-- Error Message -->
                                 </div>
