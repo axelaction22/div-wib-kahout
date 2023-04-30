@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 29 avr. 2023 à 15:32
+-- Généré le : dim. 30 avr. 2023 à 15:58
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -126,11 +126,18 @@ CREATE TABLE `utilisateurs` (
   `login` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `role` varchar(50) NOT NULL,
   `est_valide` tinyint(4) NOT NULL,
   `clef` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id_utilisateur`, `login`, `image`, `email`, `password`, `role`, `est_valide`, `clef`) VALUES
+(1, 'test', '', 'test@test.fr', '$2y$10$Q4TC5bRxuPPD9vUCOdy88efSDB4SnPdhAtYAsghok4l4.GIFOuUoS', 'utilisateur', 1, 0);
 
 --
 -- Index pour les tables déchargées
@@ -195,7 +202,8 @@ ALTER TABLE `role`
 --
 ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`id_utilisateur`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `login` (`login`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -229,7 +237,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
