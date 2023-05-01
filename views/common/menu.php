@@ -21,7 +21,7 @@
         <a class="nav-link "aria-current="page" href="<?= URL;?>compte/profil">Profil</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="<?= URL;?>compte/decouverteQuizz">Quizz</a>
+        <a class="nav-link" href="<?= URL;?>quizz">Quizz</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="<?= URL;?>compte/deconnexion">Se déconnecter</a>
@@ -32,10 +32,10 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes Quizz</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<?= URL; ?>administration/droits"> Créer un Quizz</a>
+                <a class="dropdown-item" href="<?= URL; ?>compte/creerQuizz"> Créer un Quizz</a>
               </div>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<?= URL; ?>administration/droits"> Voir mes Quizz</a>
+                <a class="dropdown-item" href="<?= URL; ?>lol"> Voir mes Quizz</a>
               </div>
           </li>    
       </li>

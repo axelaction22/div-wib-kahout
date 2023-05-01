@@ -2,6 +2,7 @@
 <div>
     <div>
         <img src="<?= URL; ?>public/assets/images/<?= $utilisateur['image'] ?>" width="100px" alt="photo de profil"/>
+        <link rel="stylesheet" href="<?= URL; ?>public/CSS/profil.css">
     </div>
     <div>
         <form method="POST" action="<?= URL;?>compte/validation_modificationImage" enctype="multipart/form-data">

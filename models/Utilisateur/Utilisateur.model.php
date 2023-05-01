@@ -100,7 +100,7 @@ class utilisateurManager extends MainManager{
 
     public function linkUtilisateurMatiere($id_matiere,$id_utilisateur){
         //fct pour s'inscrire a un cours
-        $req ="INSERT INTO etudier(id_etudiant,id_cours) VALUES (:,:id_matiere)";
+        $req ="INSERT INTO etudier(id_etudiant,id_cours) VALUES (:id_utilisateur,:id_matiere)";
         $stmt=$this->getBdd()->prepare($req);
         $stmt->bindValue(":id_matiere",$id_matiere,PDO::PARAM_INT);
         $stmt->bindValue(":id_utilisateur",$id_utilisateur,PDO::PARAM_INT);

@@ -129,11 +129,11 @@ class UtilisateurController extends MainController{
     }
 
 
-    public function validation_creerCompte($login,$password,$mail){
+    public function validation_creerCompte($login,$password,$mail,$role){
         if ($this->utilisateurManager->verifLoginDisponible($login)){
             $passwordCrypte=password_hash($password,PASSWORD_DEFAULT);
             $clef = rand(0,9999);
-            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur")){
+            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png",$role)){
                 $this->sendMailValidation($login,$mail,$clef);
                 ToolBox::ajouterMessageAlerte("Le compte a été crée, un mail de validation vous a été envoyé !",ToolBox::COULEUR_VERTE);
                 header("Location: ".URL."creerCompte");
