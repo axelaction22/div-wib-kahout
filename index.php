@@ -94,23 +94,21 @@ try {
                         if(strlen($_POST['nom-quizz'])>49){
                             ToolBox::ajouterMessageAlerte("Le nom ne doit pas depasser 50 caracteres",ToolBox::COULEUR_ROUGE);
                             $professeurController->creerQuizz();
-                            break;
+                            
                         }else if (strlen($_POST['desc'])>999){
                             ToolBox::ajouterMessageAlerte("La description ne doit pas dépasser 1000 caracteres",ToolBox::COULEUR_ROUGE);
                             $professeurController->creerQuizz();
-                            break;
+                            
                         }else if (strlen($_POST['diplome'])>49){
                             ToolBox::ajouterMessageAlerte("La description ne doit pas depasser 50 caracteres",ToolBox::COULEUR_ROUGE);
                             $professeurController->creerQuizz();
-                            break;
+                           
                         }
-                        $professeurController->quizzSubmit($_POST['matiere'],$_POST['nom-quizz'],$_POST['desc']);
-                        $professeurController->creerQuizz();
-
-
                         break;
-                    default:
-                        throw new Exception("la page n'existe pas");
+                    case "voir_mes_Quizz":
+                        $professeurController->voir_mes_Quizz();
+                        break;
+                    default:throw new Exception("la page n'existe pas");
                 }
             }
             break;

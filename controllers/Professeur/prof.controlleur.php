@@ -28,8 +28,20 @@ class profController extends MainController
         $this->genererPage($data_page);
     }
 
-    public function quizzSubmit($matiere, $nomQuizz,$diplome){
-        $this->profManager->bdajoutQuizz($diplome, $matiere,$nomQuizz);
+    public function voir_mes_Quizz(){
+        $id_prof=$this->profManager->getIDUtilisateur($_SESSION['profil']['login'] );
+        $quizz =$this->profManager->bdgetQuizzProf($id_prof);
+        $data_page = [
+            "page_description" => "Page d'observation des quizz",
+            "page_title" => "Page d'observation des quizz",
+            "quizz" => $quizz,
+            "view" => "views/Professeur/voirMesQuizz.view.php",
+            "template" => "views/common/template.php"
+        ];
+        
+        $this->genererPage($data_page);
+        
+        
     }
-
+    
 }

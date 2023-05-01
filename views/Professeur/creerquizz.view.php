@@ -5,10 +5,10 @@
 <form method="POST" action="validation_creerQuizz">
 
   <div class= form-group>
-    <label for="matiere" class="form-label">Matiere</label>
-    <select class="form-control" id="matiere" name="matiere">
-    <?php foreach ($matieres as $matiere) : ?>
-      <option value="<?= $matiere['nom_matiere']?>"> <?= $matiere['nom_matiere']?> </option>
+    <label for="matieres" class="form-label">Matiere</label>
+    <select class="form-control" id="role" name="role">
+    <?php foreach ($matieres['nom_matiere'] as $matiere) : ?>
+      <option value="<?= $matiere?>"> <?= $matiere?> </option>
     <?php endforeach; ?>
     </select>
   </div>
