@@ -82,7 +82,7 @@ class ProfManager extends MainManager{
         $stmt = $this->getBdd()->prepare($req); 
         $stmt->bindValue(":id_createur",$id_createur,PDO::PARAM_INT);
         $stmt->execute();
-        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $resultat;
     }
