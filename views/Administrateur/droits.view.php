@@ -1,10 +1,11 @@
 <h1>Page de gestion des droits des utilisateurs</h1>
+<link rel="stylesheet" href="<?= URL ?>public/CSS/droits.css"></link>
 <table class="table">
     <thead>
         <tr>
-            <th>login</th>
-            <th>validé</th>
-            <th>role</th>
+            <th>Login</th>
+            <th>Validé</th>
+            <th>Rôle</th>
         </tr>
         <?php foreach ($utilisateurs as $utilisateur) : ?>
             <tr>
@@ -19,7 +20,7 @@
                             <select name="role" onchange="confirm('confirmez-vous la modification?') ? submit() : document.location.reload()" class="form-select">
                                 <option value="utilisateur" <?= $utilisateur['role'] === "utilisateur" ? "selected" : "" ?>>Utilisateur</option>
                                 <option value="professeur" <?= $utilisateur['role'] === "professeur" ? "selected" : "" ?>>Professeur</option>
-                                <option value="administrateur" <?= $utilisateur['role'] === "administrateur" ? "selected" : "" ?>>administrateur</option>
+                                <option value="administrateur" <?= $utilisateur['role'] === "administrateur" ? "selected" : "" ?>>Administrateur</option>
                             </select>
                         </form>
                     <?php endif; ?>
