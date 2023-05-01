@@ -9,7 +9,7 @@
     <input type="text" class="form-control" id="nom-quizz" name="nom-quizz" required>
   </div>
   <div class="form-group style=background-color:#222d32;">
-    <label for="diplome" class="form-label">diplome</label>
+    <label for="diplome" class="form-label">description</label>
     <input type="text" class="form-control" id="desc" name="desc" placeholder="description du quizz" required>
   </div>
   <div class="form-group style=background-color:#222d32;">
