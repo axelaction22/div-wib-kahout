@@ -98,12 +98,12 @@ class utilisateurManager extends MainManager{
         return $resultat['id_matiere'];
     }
 
-    public function linkUtilisateurMatiere($id_matiere,$id_utilisateur){
+    public function linkUtilisateurMatiere($id_matiere,$login){
         //fct pour s'inscrire a un cours
         $req ="INSERT INTO etudier(id_etudiant,id_cours) VALUES (:id_utilisateur,:id_matiere)";
         $stmt=$this->getBdd()->prepare($req);
         $stmt->bindValue(":id_matiere",$id_matiere,PDO::PARAM_INT);
-        $stmt->bindValue(":id_utilisateur",$id_utilisateur,PDO::PARAM_INT);
+        $stmt->bindValue(":id_utilisateur",$this->getIDUtilisateur($login),PDO::PARAM_INT);
         $stmt->execute();
         $estModifier=($stmt->rowCount()>0);
         $stmt->closeCursor();
@@ -163,6 +163,18 @@ class utilisateurManager extends MainManager{
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         return $datas;
+    }
+
+    public function listeQuizz(){
+        $id_utilisateur = $this->getIDUtilisateur($_SESSION['profil']['login']);
+
+        $req ="SELECT * FROM quizz WHERE id_matiere IN {SELECT id_matiere FROM etudier WHERE id_etudiant = :id_utilisateur}";
+        $stmt=$this->getBdd()->prepare($req);
+        $stmt->bindValue(":id_utilisateur",$id_utilisateur,PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
     }
 
     

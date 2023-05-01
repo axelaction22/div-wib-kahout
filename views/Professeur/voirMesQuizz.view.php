@@ -7,8 +7,8 @@
                     <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?=$quizz['nomQuizz']?> </h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text"><?=$quizz['description']?></p>
+                        <a href="editQuizz/<?=$quizz['id_quizz']?>" class="btn btn-primary">Edit Quizz</a>
                     </div>
                 </div>
             </div>
