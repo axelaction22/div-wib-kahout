@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="<?= $page_description; ?>">
+    <meta name="description" content="<? $page_description?>"><!-- cette ligne a causé une erreur et ne le fais plus, a surveiller -->
+    
 
     <title><?=$page_title; ?></title>
 
