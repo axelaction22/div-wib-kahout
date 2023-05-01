@@ -41,7 +41,17 @@ class profController extends MainController
         
         $this->genererPage($data_page);
         
-        
+    }
+
+
+    public function edit_quizz($id_quizz){
+        $data_page=[
+            "page_description" => "Page de modification du quizz",
+            "page_title"=>"Page de modification du quizz",
+            "view"=>"views/Professeur/editquizz.view.php",
+            "template"=>"views/common/template.php"
+        ];
+        $this->genererPage($data_page);
     }
     
 }
