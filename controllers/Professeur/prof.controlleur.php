@@ -21,7 +21,7 @@ class profController extends MainController
         $data_page = [
             "page_description" => "Page de création de compte",
             "page_title" => "Page de création de compte",
-            "view" => "views/Visiteur/creerQuizz.view.php",
+            "view" => "views/Professeur/creerQuizz.view.php",
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);
