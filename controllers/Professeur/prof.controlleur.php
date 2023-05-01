@@ -16,11 +16,14 @@ class profController extends MainController
 
     public function creerQuizz()
     {
+        $matieres = $this->profManager->bdgetMatieres();
+
         $data_page = [
             "page_description" => "Page de création de quizz",
             "page_title" => "Page de création de quizz",
             "view" => "views/Professeur/creerQuizz.view.php",
-            "template" => "views/common/template.php"
+            "template" => "views/common/template.php",
+            "matieres" => $matieres
         ];
         $this->genererPage($data_page);
     }

@@ -69,5 +69,13 @@ class ProfManager extends MainManager{
         return $estModifier;
     }
 
+    public function bdgetMatieres(){
+        $req = $this->getBdd()->prepare("SELECT * FROM matieres");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
 
 }
