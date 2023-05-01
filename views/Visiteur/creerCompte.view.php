@@ -13,6 +13,14 @@
     <label for="mail" class="form-label">Mail</label>
     <input type="mail" class="form-control" id="mail" name="mail" placeholder="Mail" required>
   </div>
+  <div class="form-group">
+  <label for="role" class="form-label">Role</label>
+  <select class="form-control" id="role" name="role">
+    <option value="utilisateur">Utilisateur</option>
+    <option value="professeur">Professeur</option>
+  </select>
+</div>
+
 
   <button type="submit" class="btn btn-primary">Créer !</button>
 </form>
