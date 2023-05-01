@@ -101,6 +101,23 @@ try{
             break;
             case "validationMail" :$utilisateurController->validation_mailCompte($url[1],$url[2]);
             break;
+            case "administration" :
+                if(!Securite::estConnecte()){
+                    ToolBox::ajouterMessageAlerte("Veuillez vous connecter !",ToolBox::COULEUR_ROUGE);
+                    header("Location: ".URL."login");
+                }else if(!Securite::estAdministrateur()){
+                    ToolBox::ajouterMessageAlerte("Vous n'avez pas le droit d'être ici",ToolBox::COULEUR_ROUGE);
+                    header("Location: ".URL."accueil");
+                }else{
+                    switch($url[1]){
+                        case "droits": $administrateurController->droits();
+                        break;
+                        case 'validation_modificationRole' : $administrateurController->validation_modificationRole($_POST['login'], $_POST['role']);
+                        break;
+                        default : throw new Exception("La page n'existe pas");
+                    }
+                }
+            break;
            default : throw new Exception("la page n'existe pas");
         }
     }catch(Exception $e){

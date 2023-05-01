@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 30 avr. 2023 à 15:58
+-- Généré le : lun. 01 mai 2023 à 17:02
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -66,6 +66,13 @@ CREATE TABLE `matiere` (
   `langue` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `matiere`
+--
+
+INSERT INTO `matiere` (`id_matiere`, `nom_matiere`, `langue`) VALUES
+(1, 'Espagnol', 'Français');
+
 -- --------------------------------------------------------
 
 --
@@ -88,9 +95,18 @@ CREATE TABLE `question` (
 
 CREATE TABLE `quizz` (
   `id_quizz` int(11) NOT NULL,
+  `nomQuizz` varchar(50) NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `diplome` varchar(50) DEFAULT NULL,
   `id_matiere` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `quizz`
+--
+
+INSERT INTO `quizz` (`id_quizz`, `nomQuizz`, `description`, `diplome`, `id_matiere`) VALUES
+(3, 'quizzEspagnol', '', 'diplomeEspagnol', 1);
 
 -- --------------------------------------------------------
 
@@ -137,7 +153,9 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `login`, `image`, `email`, `password`, `role`, `est_valide`, `clef`) VALUES
-(1, 'test', '', 'test@test.fr', '$2y$10$Q4TC5bRxuPPD9vUCOdy88efSDB4SnPdhAtYAsghok4l4.GIFOuUoS', 'utilisateur', 1, 0);
+(1, 'test', 'profils/profil.png', 'test@test.fr', '$2y$10$Sx2Q0Ef3byGj3BAyRkOhSOPJpWeU/tOPwxgW70k2aNPbv5CDsHRLe', 'administrateur', 1, 0),
+(2, 'patate', 'profils/profil.png', 'patate@gmail.com', '$2y$10$zN8lLJvZaH1es3EeOi5cXOSpf/Ey2ZX4pXUs4sFUcxNU2tPQlgFMK', 'professeur', 1, 6069),
+(3, 'tutu', 'profils/profil.png', 'tutu@tutu.fr', '$2y$10$duhXJZptbKSRR6dkdPqSGu3jWLiQ.pRmiEtMgtZBg9MxXzpyc61pi', 'utilisateur', 1, 8388);
 
 --
 -- Index pour les tables déchargées
@@ -213,7 +231,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id_matiere` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_matiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `question`
@@ -225,7 +243,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT pour la table `quizz`
 --
 ALTER TABLE `quizz`
-  MODIFY `id_quizz` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_quizz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `role`
@@ -237,7 +255,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées
