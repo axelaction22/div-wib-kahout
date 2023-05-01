@@ -25,6 +25,14 @@
                         </form>
                     <?php endif; ?>
                 </td>
+                <td>
+                    <?php if ($utilisateur['role'] !== "administrateur") : ?>
+                        <form method="POST" action="<?= URL; ?>administration/supprimerCompte">
+                            <input type="hidden" name="login" value="<?= $utilisateur['login']; ?>" />
+                            <button type="submit" onclick="return confirm('Confirmez-vous la suppression du compte?')">Supprimer</button>
+                        </form>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </thead>

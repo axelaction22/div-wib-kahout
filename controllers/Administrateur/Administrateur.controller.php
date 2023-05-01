@@ -37,6 +37,16 @@ class AdministrateurController extends MainController{
         }
         header("Location: ".URL."administration/droits");
     }
+
+    public function supprimerCompte($login) {
+        if($this->administrateurManager->bdSupprimerCompte($login)){
+            ToolBox::ajouterMessageAlerte("Le compte a été supprimé.", ToolBox::COULEUR_VERTE);
+             return true;
+        } else {
+            ToolBox::ajouterMessageAlerte("Erreur lors de la suppression du compte.", ToolBox::COULEUR_ROUGE);
+            return false;
+        }
+    }
 }
 
 ?>
