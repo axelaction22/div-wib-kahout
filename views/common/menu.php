@@ -21,7 +21,7 @@
         <a class="nav-link "aria-current="page" href="<?= URL;?>compte/profil">Profil</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="<?= URL;?>quizz">Quizz</a>
+        <a class="nav-link" href="<?= URL;?>compte/decouverteQuizz">Quizz</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="<?= URL;?>compte/deconnexion">Se déconnecter</a>

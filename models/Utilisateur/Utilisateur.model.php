@@ -156,6 +156,15 @@ class utilisateurManager extends MainManager{
         return $estModifier;
     }
 
+
+    public function getQuizz(){
+        $req = $this->getBdd()->prepare("SELECT * FROM quizz");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
     
 
    

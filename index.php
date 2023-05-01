@@ -80,6 +80,8 @@ try{
                                 header("Location: ".URL."compte/profil");
                             }
                         break;
+                        case "decouverteQuizz" : $utilisateurController->decouverteQuizz();
+                        break;
                     default : throw new Exception("la page n'existe pas");
                 }
             }

@@ -47,6 +47,18 @@ class UtilisateurController extends MainController{
         ];
         $this->genererPage($data_page);
     }
+
+    public function decouverteQuizz(){
+        $quizz=$this->utilisateurManager->getQuizz();
+        $data_page =[
+            "page_descritpion" => "Page de Quizz",
+            "page_title"=>"Page de Quizz",
+            "quizz"=>$quizz,
+            "view"=>"views/Utilisateur/decouverteQuizz.view.php",
+            "template"=>"views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
     public function deconnexion(){
         ToolBox::ajouterMessageAlerte("La deconnexion est effectuée !",ToolBox::COULEUR_VERTE);
         unset($_SESSION['profil']);
@@ -184,6 +196,9 @@ class UtilisateurController extends MainController{
             unlink("public/assets/images/".$ancienneImage);
         }
     }
+
+
+
 
 
     
