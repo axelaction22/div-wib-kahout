@@ -1,11 +1,11 @@
 Adresse qui envoie le mail
-div.wib.smtp@gmail.com
-MotDePasseSMTP0
+raphael.pouly@gmail.com
+
 
 Dans php.ini
 SMTP=smtp.gmail.com
 smtp_port=587
-sendmail_from = div.wib.smtp@gmail.com
+sendmail_from = raphael.pouly@gmail.com
 sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
 
 
@@ -14,6 +14,6 @@ smtp_server=smtp.gmail.com
 smtp_port=587
 error_logfile=error.log
 debug_logfile=debug.log
-auth_username=div.wib.smtp@gmail.com
+auth_username=raphael.pouly@gmail.com
 auth_password=djhjpetzpnanarki
-force_sender=div.wib.smtp@gmail.com
+force_sender=raphael.pouly@gmail.com
