@@ -153,7 +153,5 @@ try {
         }
     }catch(Exception $e){
         $visiteurController->pageErreur($e->getMessage());
-    }
- catch (Exception $e) {
-    $visiteurController->pageErreur($e->getMessage());
+
 }
