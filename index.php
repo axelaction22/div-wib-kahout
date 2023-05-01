@@ -93,7 +93,8 @@ try{
                     $login = Securite::secureHTML($_POST['login']);
                     $password =Securite::secureHTML($_POST['password']);
                     $mail = Securite::secureHTML($_POST['mail']);
-                    $utilisateurController->validation_creerCompte($login,$password,$mail);
+                    $role = securite::secureHTML($_POST['role']);
+                    $utilisateurController->validation_creerCompte($login,$password,$mail,$role);
                 }else{
                     ToolBox::ajouterMessageAlerte("Les 3 informations sont obligatoires !",Toolbox::COULEUR_ROUGE);
                     header("Location: ".URL."creerCompte");
