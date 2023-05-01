@@ -104,6 +104,8 @@ try {
                             $professeurController->creerQuizz();
                             break;
                         }
+                        $professeurController->quizzSubmit($_POST['matiere'],$_POST['nom-quizz'],$_POST['desc']);
+                        $professeurController->creerQuizz();
 
 
                         break;
