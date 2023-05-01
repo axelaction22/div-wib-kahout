@@ -7,8 +7,8 @@
   <div class= form-group>
     <label for="matieres" class="form-label">Matiere</label>
     <select class="form-control" id="role" name="role">
-    <?php foreach ($matieres['nom_matiere'] as $matiere) : ?>
-      <option value="<?= $matiere?>"> <?= $matiere?> </option>
+    <?php foreach ($matieres as $matiere) : ?>
+      <option value="<?= $matiere['nom_matiere']?>"> <?= $matiere['nom_matiere']?> </option>
     <?php endforeach; ?>
     </select>
   </div>
