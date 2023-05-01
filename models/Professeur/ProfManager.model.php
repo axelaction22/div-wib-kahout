@@ -43,12 +43,13 @@ class ProfManager extends MainManager{
     }
 
 
-    public function bdajoutQuizz($diplome,$nom_matiere){
+    public function bdajoutQuizz($diplome,$nom_matiere,$nomQuizz){
         $id_matiere = $this->getIDMatiere($nom_matiere);
-        $req ="INSERT INTO quizz(diplome,id_matiere) VALUES (:diplome,:id_matiere)";
+        $req ="INSERT INTO quizz(diplome,id_matiere,nomQuizz) VALUES (:diplome,:id_matiere,:nomQuizz)";
         $stmt=$this->getBdd()->prepare($req);
         $stmt->bindValue(":diplome",$diplome,PDO::PARAM_STR);
         $stmt->bindValue(":id_matiere",$id_matiere,PDO::PARAM_INT);
+        $stmt->bindValue(":nomQuizz",$nomQuizz,PDO::PARAM_STR);
         $stmt->execute();
         $estModifier=($stmt->rowCount()>0);
         $stmt->closeCursor();

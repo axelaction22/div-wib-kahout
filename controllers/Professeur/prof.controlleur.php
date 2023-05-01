@@ -27,4 +27,9 @@ class profController extends MainController
         ];
         $this->genererPage($data_page);
     }
+
+    public function quizzSubmit($matiere, $nomQuizz,$diplome){
+        $this->profManager->bdajoutQuizz($diplome, $matiere,$nomQuizz);
+    }
+
 }
