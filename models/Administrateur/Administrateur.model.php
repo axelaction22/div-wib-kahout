@@ -20,4 +20,11 @@ class AdministrateurManager extends MainManager{
         $stmt->closeCursor();
         return $estModifier;
     }
+
+    public function bdSupprimerCompte($login){
+        $req = "DELETE FROM utilisateurs where login = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindParam(':login', $login, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
 }
