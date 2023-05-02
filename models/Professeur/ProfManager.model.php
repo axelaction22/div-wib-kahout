@@ -57,12 +57,12 @@ class ProfManager extends MainManager{
 
     
     public function bdajoutQuestion($type,$enonce,$reponses,$id_quizz){
-        $req ="INSERT INTO questions(type,enonce,reponses,id_quizz) VALUES (:type,:enonce,:reponses,:id_quizz)";
+        $req ="INSERT INTO question(type,enonce,reponses,id_quizz) VALUES (:type,:enonce,:reponses,:id_quizz)";
         $stmt=$this->getBdd()->prepare($req);
         $stmt->bindValue(":type",$type,PDO::PARAM_STR);
         $stmt->bindValue(":enonce",$enonce,PDO::PARAM_STR);
         $stmt->bindValue(":reponses",$reponses,PDO::PARAM_STR);
-        $stmt->bindValue(":id_quizz",$$id_quizz,PDO::PARAM_STR);
+        $stmt->bindValue(":id_quizz",$id_quizz,PDO::PARAM_INT);
         $stmt->execute();
         $estModifier=($stmt->rowCount()>0);
         $stmt->closeCursor();

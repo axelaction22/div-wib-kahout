@@ -197,6 +197,18 @@ class UtilisateurController extends MainController{
         }
     }
 
+    public function repondreQuizz($id_quizz){
+        $data_page=[
+            "page_description" => "Page pour répondre au Quizz",
+            "page_title"=>"Page pour répondre au Quizz",
+            
+            "view"=>"views/Utilisateur/modificationPassword.view.php",
+            "template"=>"views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
+
 
 
 

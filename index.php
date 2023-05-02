@@ -108,6 +108,17 @@ try {
                     case "voir_mes_Quizz":
                         $professeurController->voir_mes_Quizz();
                         break;
+                    case "editQuizz":
+                        $professeurController->edit_quizz($url[2]);
+                        break;
+                    case "creerQuestionOuverte":
+                        $enonce=Securite::secureHTML($_POST['enonce-texte']);
+                        $reponse=Securite::secureHTML($_POST['reponse-texte']);
+                        $professeurController->creerQuestion("ouvert","enonce-texte","reponse-texte",2);
+                        break;
+                    case "repondreQuizz":
+                        $utilisateurController->repondreQuizz($url[2]);
+                        
                     default:throw new Exception("la page n'existe pas");
                 }
             }

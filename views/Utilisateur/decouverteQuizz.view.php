@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?=$quizz['nomQuizz']?> </h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="compte/repondreQuizz/<?=$quizz['id_quizz']?>" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>

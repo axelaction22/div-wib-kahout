@@ -53,5 +53,17 @@ class profController extends MainController
         ];
         $this->genererPage($data_page);
     }
+
+
+
+    public function creerQuestion($type,$enonce,$reponses,$id_quizz){
+        if($this->profManager->bdajoutQuestion($type,$enonce,$reponses,$id_quizz)){
+            ToolBox::ajouterMessageAlerte("Vous avez crée une question !",ToolBox::COULEUR_VERTE);
+            header('Location: '.URL.'compte/editQuizz');
+        }else  {
+            ToolBox::ajouterMessageAlerte("La question ne s'est pas crée! ", Toolbox::COULEUR_ROUGE);
+            header('Location: '.URL.'compte/editQuizz');
+        }
+    }
     
 }
