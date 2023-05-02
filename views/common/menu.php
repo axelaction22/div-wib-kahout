@@ -33,7 +33,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes Quizz</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<?= URL; ?>compte/creerQuizz"> Créer un Quizz</a>
-                <a class="dropdown-item" href="<?= URL; ?>compte/voir_mes_Quizz"> Voir mes Quizz</a>
+                <a class="dropdown-item" href="<?= URL; ?>compte/voirMesQuizz"> Voir mes Quizz</a>
               </div>
               
           </li>    
