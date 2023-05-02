@@ -1,5 +1,6 @@
 <h1>Page découverte Quizz</h1>
-<div class="container">
+<link  rel="stylesheet" href="<?=URL?>public/CSS/decouverteQuiz.css"></link>
+<div class="container" style="background-color: #222D32">
     <div class="row">
         <?php foreach ($quizz as $quizz): ?>
             <div class="col-md-4">
