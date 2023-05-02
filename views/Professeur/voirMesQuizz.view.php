@@ -1,4 +1,5 @@
 <h1>Page découverte Quizz</h1>
+<link  rel="stylesheet" href="<?=URL?>public/CSS/voirmesquizz.css"></link>
 <div class="container">
     <div class="row">
         <?php foreach ($quizz as $quizz): ?>

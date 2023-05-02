@@ -1,6 +1,6 @@
 <h1>Création de quizz</h1>
 
-
+<link href="<?=URL?>public/CSS/creerquizz.css" rel="stylesheet"></link>
 
 <form method="POST" action="validation_creerQuizz">
 
@@ -14,15 +14,15 @@
   </div>
   <div class="form-group bg-black">
     <label for="nom-quizz" class="form-label">Nom du Quizz</label>
-    <input type="text" class="form-control" id="nom-quizz" name="nom-quizz" required>
+    <input type="text" class="form-control" id="nom-quizz" name="Nom-quizz" required>
   </div>
   <div class="form-group">
-    <label for="description" class="form-label">description</label>
-    <input type="text" class="form-control" id="desc" name="desc" placeholder="description du quizz" required>
+    <label for="description" class="form-label">Description</label>
+    <input type="text" class="form-control" id="desc" name="desc" placeholder="Description du quizz" required>
   </div>
   <div class="form-group">
-    <label for="diplome" class="form-label">diplome</label>
-    <input type="text" class="form-control" id="diplome" name="diplome" placeholder="diplome" required>
+    <label for="diplome" class="form-label">Diplôme</label>
+    <input type="text" class="form-control" id="diplome" name="diplome" placeholder="Diplôme" required>
   </div>
 
 
