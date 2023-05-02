@@ -70,7 +70,7 @@ class ProfManager extends MainManager{
     }
 
     public function bdgetMatieres(){
-        $req = $this->getBdd()->prepare("SELECT * FROM matiere");
+        $req = $this->getBdd()->prepare("SELECT nom_matiere FROM matiere");
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
