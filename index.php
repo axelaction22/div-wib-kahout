@@ -105,11 +105,11 @@ try {
                            
                         }
                         break;
-                    case "voir_mes_Quizz":
-                        $professeurController->voir_mes_Quizz();
+                    case "voirMesQuizz":
+                        $professeurController->voirMesQuizz();
                         break;
                     case "editQuizz":
-                        $professeurController->edit_quizz($url[2]);
+                        $professeurController->editQuizz($url[2]);
                         break;
                     case "creerQuestionOuverte":
                         $enonce=Securite::secureHTML($_POST['enonce-texte']);

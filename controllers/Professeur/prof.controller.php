@@ -28,7 +28,7 @@ class profController extends MainController
         $this->genererPage($data_page);
     }
 
-    public function voir_mes_Quizz(){
+    public function voirMesQuizz(){
         $id_prof=$this->profManager->getIDUtilisateur($_SESSION['profil']['login'] );
         $quizz =$this->profManager->bdgetQuizzProf($id_prof);
         $data_page = [
@@ -44,7 +44,7 @@ class profController extends MainController
     }
 
 
-    public function edit_quizz($id_quizz){
+    public function editQuizz($id_quizz){
         $data_page=[
             "page_description" => "Page de modification du quizz",
             "page_title"=>"Page de modification du quizz",
