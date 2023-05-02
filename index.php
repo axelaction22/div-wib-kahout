@@ -11,7 +11,7 @@ require_once("./controllers/Toolbox.class.php");
 require_once("./controllers/Visiteur/Visiteur.controller.php");
 require_once("./controllers/Utilisateur/Utilisateur.controller.php");
 require_once("./controllers/Administrateur/Administrateur.controller.php");
-require_once("./controllers/Professeur/prof.controlleur.php");
+require_once("./controllers/Professeur/prof.controller.php");
 
 
 $visiteurController = new VisiteurController();
